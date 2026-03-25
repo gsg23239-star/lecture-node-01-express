@@ -6,10 +6,31 @@ dotenv.config();
 
 // 2. Express 앱 생성
 const app =express();
+app.use(express.json());
 
+// 데이터베이스가 없어서 임시로 만든 데이터 변수    (mock)
+const mockPosts = [
+    { id: 1, title: "첫 번째 택배", content: "무사히 도착했습니다" },
+    { id: 2, title: "두 번째 택배", content: "파손 주의해주세요!"},
+    { id: 3, title: "두 번째 택배", content: "문 앞에 두고 가주세요"},
+];
+
+
+// "/"로 들어왔을 때 동작되는 일꾼
 app.get("/", (req, res )=> {
-        res.send("<h1>express 서버</h1><div>이렇게 쓰는건 너무 힘드네요</div>");
-})
+        res.send("여기는 루트입니다.");
+});
+
+app.get("/hello",(a, b) => {
+    b.send("여기는 hello 주소로 들어왔습니다.");
+});
+
+
+app.get("/posts", (req, res) => {
+    // res.json(보낼데이터) 메소드 : string이 아닌, 객체 타입의 데이터 (단, 함수 빼고)를 보낼 대 사용
+    // res.json 메소드를 사용하려면 app,use(express.json()) 을 꼭 써줘야 함
+    res.json(mockPosts);
+});
 
 // 3. app.listen : 서버를 실행하는 메소드
 //      매개변수 2개     (포트번호, 함수)
