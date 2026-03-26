@@ -34,9 +34,9 @@ app.get("/posts", (req, res) => {
 
 // 3. app.listen : 서버를 실행하는 메소드
 //      매개변수 2개     (포트번호, 함수)
-app.listen(3000,()=> {
+app.listen(process.env.port,()=> {
     // 얘가 실행되면 처음 할 일
-    console.log("서버가 실행되었습니다. http://localhost:3000");
+    console.log(`서버가 실행되었습니다. http://localhost:${process.env.PORT}`);
 });
 
 console.log('hello, world! from TypeScript!!!!');
