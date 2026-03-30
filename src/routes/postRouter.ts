@@ -1,6 +1,6 @@
 import express from "express";
 
-const router = express.Router();
+const router = express.Router();    // 라우터를 새로 생성
 
 // 데이터베이스가 없어서 임시로 만든 데이터 변수    (mock)
 const mockPosts = [
